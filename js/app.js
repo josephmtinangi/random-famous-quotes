@@ -2,6 +2,9 @@ axios.defaults.baseURL = 'https://andruxnet-random-famous-quotes.p.mashape.com';
 axios.defaults.headers.common['X-Mashape-Key'] = 'kAica0sHWemshYVboYcEWw510FR8p1Hc5Pfjsn6BS9ArNYkybu';
 
 $(document).ready(function(){
+	var txtColor = ['#ECF0F1'];
+	var bgColor = ['#2C3E50', '#E74C3C', '#3498DB', '#2980B9'];
+
 	var author = document.querySelector('#author');
 	var quote = document.querySelector('#quote');
 
@@ -17,6 +20,9 @@ $(document).ready(function(){
 			}
 		})
 		.then(function (response) {
+			$('.jumbotron').css("background-color", bgColor[getRandomInt(0, bgColor.length)]);
+			$('.jumbotron').css("color", txtColor[0]);
+						
 			$('#quote').fadeIn(3000, function () {
 				quote.innerHTML = response.data.quote;
 			});			
@@ -25,7 +31,12 @@ $(document).ready(function(){
 			});
 		})
 		.catch(function (error) {
-			console.log(error)
+			console.log(error);
+			$('#quote').text('Sorry! There is a problem with the API. Please try again later or clone the repo to try on your own machine.')
 		});		
+	}
+
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) + min);
 	}
 });
