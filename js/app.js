@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 	setInterval(function () {
 		getQuote();
-	}, 5000);
+	}, 10000);
 
 	function getQuote() {
 		axios.get('/', {
