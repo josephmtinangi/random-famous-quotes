@@ -4,10 +4,10 @@ axios.defaults.headers.common['X-Mashape-Key'] = 'kAica0sHWemshYVboYcEWw510FR8p1
 $(document).ready(function(){
 	var author = document.querySelector('#author');
 	var quote = document.querySelector('#quote');
-	var button = document.querySelector('#next');
-	button.addEventListener('click', getQuote);
 
-	getQuote();
+	setInterval(function () {
+		getQuote();
+	}, 5000);
 
 	function getQuote() {
 		axios.get('/', {
@@ -17,8 +17,12 @@ $(document).ready(function(){
 			}
 		})
 		.then(function (response) {
-			author.innerHTML = response.data.author;
-			quote.innerHTML = response.data.quote;
+			$('#quote').fadeIn(3000, function () {
+				quote.innerHTML = response.data.quote;
+			});			
+			$('#author').fadeIn("slow", function () {
+				author.innerHTML = response.data.author;
+			});
 		})
 		.catch(function (error) {
 			console.log(error)
