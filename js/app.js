@@ -22,7 +22,7 @@ $(document).ready(function(){
 		.then(function (response) {
 			$('.jumbotron').css("background-color", bgColor[getRandomInt(0, bgColor.length)]);
 			$('.jumbotron').css("color", txtColor[0]);
-						
+
 			$('#quote').fadeIn(3000, function () {
 				quote.innerHTML = response.data.quote;
 			});			
@@ -32,7 +32,7 @@ $(document).ready(function(){
 		})
 		.catch(function (error) {
 			console.log(error);
-			$('#quote').text('Sorry! There is a problem with the API. Please try again later or clone the repo to try on your own machine.')
+			$('#quote').text('Whoops! Something went wrong. Please try again later.')
 		});		
 	}
 
