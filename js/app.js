@@ -7,6 +7,8 @@ $(document).ready(function(){
 	var button = document.querySelector('#next');
 	button.addEventListener('click', getQuote);
 
+	getQuote();
+
 	function getQuote() {
 		axios.get('/', {
 			params: {
